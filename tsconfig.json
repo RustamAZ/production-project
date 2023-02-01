@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        // куда производится сборка, но собираем мы при помощи webpack так что пофигу
+        "noImplicitAny": true,
+        // noImplicitAny не позволяет использовать какие-то переменные без явного типа
+        "module": "ESNext",
+        //module модульная система, различные способы экспорта и импорта модулей
+        "target": "es5",
+        // target - версия экмаскрипт в который будет копилироваться код
+        "jsx": "react-jsx",
+        // jsx - позволяет писать react кострукции 
+        "allowJs": true,
+        //allowJs позволяет комппилятору обрабатывать не только ts файлы но и js
+        "moduleResolution": "node",
+        // moduleResolution определяет какие импорты будут node и classic. 99% используется node
+        "baseUrl": ".",
+        // Для абсолютного пути
+        "esModuleInterop": true,
+        // esModuleInterop - позволяет работать с пакетами, которые используют
+        // common js как с обычными пакетами с помощью import (requier() module.export) = common js
+        // import Moment from 'moment';
+        // без флага esModuleInterop результат indefined
+        // console.log(Moment);
+        // с флагом результат [Object object]
+        // console.log(Moment);
+        "allowSyntheticDefaultImports": true
+        // allowSyntheticDefaultImports Если какая либо библиотека не имеет default impor,
+        // лоадеры вроде ts-loader или babel-loader автоматически создают их
+        // вместо такого импорта 
+        // import * as React from 'react';
+        // можно писать такой
+        // import React from 'react';
+    },
+    "ts-node": {
+        "compilerOptions": {
+          "module": "CommonJS"
+        }
+    }
+}
