@@ -4,6 +4,45 @@ import { RuleSetRule } from 'webpack';
 
 export const buildLoaders = (option: BuildOptions): RuleSetRule[] => {
     const {isDev} = option;
+
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+        loader: 'babel-loader',
+        options: {
+            presets:['@babel/preset-env'],
+            "plugins": [
+                    [
+                        "i18next-extract",
+                        {
+                            locales: ['ru', 'en'],
+                            keyAsDefaultValue: true,
+                        }
+                    ],
+                ] 
+            },
+        }
+    }
+    
+    //file - png,jpeg,jpg,gif,woff ...
+    const fileloader = {
+        test: /\.(png|jpe?g|gif|woff|woff2)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ],
+    }
+
+    //svg
+    const svgloader = {
+        test: /\.svg$/,
+        use: [{
+            loader: '@svgr/webpack'
+        }],
+    }
+
     // Если не используем тайпскрипт - нужен babel-loader
     const typescriptLoader = {
         test: /\.tsx?$/, // регулярное выражениее по расширению файла 
@@ -31,5 +70,10 @@ export const buildLoaders = (option: BuildOptions): RuleSetRule[] => {
 
       }
 
-    return [typescriptLoader, cssloader]
+    return [
+        fileloader,
+        svgloader,
+        babelLoader,
+        typescriptLoader,
+        cssloader]
 }

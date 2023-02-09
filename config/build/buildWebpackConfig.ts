@@ -26,7 +26,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         // resolve -- отвечает за расшширения файлов, 
         // которые мы не указываем, при импорте компонентов типо 
         // import Component from "./component(нет расширения файла)"
-        resolve: buildResolvers(),
+        resolve: buildResolvers(options),
         devtool: isDev ? 'inline-source-map' : false,
         devServer: isDev ? buildDevServer(options): undefined
 

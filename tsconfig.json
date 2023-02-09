@@ -15,6 +15,9 @@
         "moduleResolution": "node",
         // moduleResolution определяет какие импорты будут node и classic. 99% используется node
         "baseUrl": ".",
+        "paths": {
+            "*": ["./src/*"]
+        },
         // Для абсолютного пути
         "esModuleInterop": true,
         // esModuleInterop - позволяет работать с пакетами, которые используют
