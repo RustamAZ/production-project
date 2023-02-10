@@ -1,13 +1,11 @@
 import React from 'react';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import { ClassNames } from "shared/lib/ClassNames/ClassNames";
+import { ClassNames } from 'shared/lib/ClassNames/ClassNames';
 
-import cls from "./Navbar.module.scss";
-import ThemeSwitcher from 'widgets/ThemeSwitcher';
-
+import cls from './Navbar.module.scss';
 
 interface NavbarProps {
-    classNames?: string;
+    className?: string;
 }
 
 interface NavbarLink {
@@ -20,26 +18,26 @@ type NavbarConfig = NavbarLink[];
 const navbarConfig: NavbarConfig = [
     {
         href: '/',
-        name: 'Главная'
+        name: 'Главная',
     },
     {
         href: '/about',
-        name: 'О нас'
-    }
-]
+        name: 'О нас',
+    },
+];
 
 export const Navbar = (props: NavbarProps) => {
+    const { className } = props;
+
     return (
-        <div className={ClassNames(cls.Navbar, {}, [])}>
+        <div className={ClassNames(cls.Navbar, {}, [className])}>
             <ul className={cls.list}>
-                {navbarConfig.map(link => {
-                    return (
-                        <li className={cls.item} key={link.name}>
-                            <AppLink theme={AppLinkTheme.SECONDARY} to={link.href}>{link.name}</AppLink>
-                        </li>
-                    )
-                })}
+                {navbarConfig.map((link) => (
+                    <li className={cls.item} key={link.name}>
+                        <AppLink theme={AppLinkTheme.SECONDARY} to={link.href}>{link.name}</AppLink>
+                    </li>
+                ))}
             </ul>
         </div>
-    )
-}
+    );
+};
