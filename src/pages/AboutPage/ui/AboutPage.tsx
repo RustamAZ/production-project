@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 const AboutPage = () => {
     const [t] = useTranslation('about');
     return (
-        <Suspense fallback="Loading">
+        <Suspense fallback="">
             <div>{t('О нас')}</div>
         </Suspense>
     );
