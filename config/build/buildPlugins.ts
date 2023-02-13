@@ -1,4 +1,3 @@
-import path from 'path';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
@@ -17,5 +16,7 @@ export const buildPlugins = ({ paths, isDev }: BuildOptions): webpack.WebpackPlu
     new webpack.DefinePlugin({
         __IS_DEV__: JSON.stringify(isDev),
     }),
-    isDev ? new ReactRefreshWebpackPlugin() : new webpack.HotModuleReplacementPlugin(),
+    isDev
+        ? new ReactRefreshWebpackPlugin({ overlay: false })
+        : new webpack.HotModuleReplacementPlugin(),
 ];

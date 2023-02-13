@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Sidebar } from 'widgets/Sidebar';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { ClassNames } from 'shared/lib/ClassNames/ClassNames';
@@ -10,6 +10,7 @@ import './styles/index.scss';
 
 const App = () => {
     const { theme } = useTheme();
+
     return (
         <div className={ClassNames('app', {}, [theme])}>
             <Suspense fallback={<PageLoader />}>
