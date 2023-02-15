@@ -27,7 +27,7 @@
         // console.log(Moment);
         // с флагом результат [Object object]
         // console.log(Moment);
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
         // allowSyntheticDefaultImports Если какая либо библиотека не имеет default impor,
         // лоадеры вроде ts-loader или babel-loader автоматически создают их
         // вместо такого импорта 
@@ -39,5 +39,8 @@
         "compilerOptions": {
           "module": "CommonJS"
         }
-    }
+    },
+    "include": [
+        "./config/jest/setupTests.ts"
+    ],
 }
