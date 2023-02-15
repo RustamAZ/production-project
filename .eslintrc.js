@@ -43,12 +43,12 @@ module.exports = {
     globals: {
         __IS_DEV__: true,
     },
-    overrites: [
+    overrides: [
         {
-            files: ['**/scr/**/*.test.{ts,tsx}'],
+            files: ['**/src/**/*.test.{ts,tsx}'],
             rules: {
                 'i18next/no-literal-string': 'off',
-            }
-        }
-    ]
+            },
+        },
+    ],
 };
