@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
   pipeline: 
-    runs-on: [windows-latest, macos-latest, ubuntu-latest]
+    runs-on: [windows-latest]
     strategy: 
       matrix: 
         node-version: [ 16.x ]
