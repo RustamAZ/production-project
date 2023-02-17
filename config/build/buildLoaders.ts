@@ -1,5 +1,6 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { RuleSetRule } from 'webpack';
+import { buildCssLoader } from './loaders/buildCssLoader';
+import { buildSvgLoader } from './loaders/buildSvgLoader';
 import { BuildOptions } from './types/config';
 
 export const buildLoaders = (option: BuildOptions): RuleSetRule[] => {
@@ -36,12 +37,7 @@ export const buildLoaders = (option: BuildOptions): RuleSetRule[] => {
     };
 
     // svg
-    const svgloader = {
-        test: /\.svg$/,
-        use: [{
-            loader: '@svgr/webpack',
-        }],
-    };
+    const svgloader = buildSvgLoader();
 
     // Если не используем тайпскрипт - нужен babel-loader
     const typescriptLoader = {
@@ -50,25 +46,7 @@ export const buildLoaders = (option: BuildOptions): RuleSetRule[] => {
         exclude: /node_modules/, // эсключение нод модули нам не нужны
     };
 
-    const cssloader = {
-        test: /\.s[ac]ss$/i,
-        use: [
-            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-            {
-                loader: 'css-loader',
-                options: {
-                    modules: {
-                        auto: ((resourcePath: string) => Boolean(resourcePath.includes('.module.'))),
-                        localIdentName: isDev
-                            ? '[path][name]__[local]'
-                            : 'hash:base64:8',
-                    },
-                },
-            },
-            'sass-loader',
-        ],
-
-    };
+    const cssloader = buildCssLoader(isDev);
 
     return [
         fileloader,
