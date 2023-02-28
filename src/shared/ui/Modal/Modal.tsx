@@ -1,3 +1,4 @@
+import { useTheme } from 'app/providers/ThemeProvider';
 import React, {
     Dispatch, ReactNode, SetStateAction, useRef,
 } from 'react';
@@ -18,6 +19,8 @@ export const Modal = (props: ModalProps) => {
         className, children, isOpen, onClose,
     } = props;
 
+    const { theme } = useTheme();
+
     const mods: Record<string, boolean> = {
         [cls.opened]: isOpen,
     };
@@ -34,11 +37,10 @@ export const Modal = (props: ModalProps) => {
 
     return (
         <Portal>
-            <div className={ClassNames(cls.Modal, mods, [className])}>
-                <div onClick={closeHandler} className={cls.overlay}>
-                    <div className={cls.content} onClick={onContentClick}>
-                        {children}
-                    </div>
+            <div className={ClassNames(cls.Modal, mods, [className, theme])}>
+                <div onClick={closeHandler} className={cls.overlay} />
+                <div className={cls.content} onClick={onContentClick}>
+                    {children}
                 </div>
             </div>
         </Portal>

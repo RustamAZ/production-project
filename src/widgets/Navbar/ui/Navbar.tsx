@@ -21,7 +21,7 @@ export const Navbar = (props: NavbarProps) => {
         <div className={ClassNames(cls.Navbar, {}, [className])}>
             <Button theme={ThemeButton.CLEAR_INVERTED} onClick={modalToggle} type="button">{t('Войти')}</Button>
             <Modal isOpen={isOpen} onClose={modalToggle}>
-                {t('c')}
+                {t('Текст модального окна')}
             </Modal>
         </div>
     );
