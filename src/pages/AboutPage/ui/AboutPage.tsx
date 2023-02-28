@@ -1,3 +1,4 @@
+import { Counter } from 'entities/Counter';
 import { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -6,6 +7,7 @@ const AboutPage = () => {
     return (
         <Suspense fallback="">
             <div>{t('О нас')}</div>
+            <Counter />
         </Suspense>
     );
 };
