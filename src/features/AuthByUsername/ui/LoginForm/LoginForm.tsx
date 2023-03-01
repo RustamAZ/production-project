@@ -19,9 +19,8 @@ export const LoginForm = (props: LoginFormProps) => {
                 className={cls.input}
                 label={t('Введите логин')}
                 autofocus
-                name="login"
             />
-            <Input className={cls.input} label={t('Введите пароль')} name="password" />
+            <Input className={cls.input} label={t('Введите пароль')} />
             <Button className={cls.loginBtn}>{t('Войти')}</Button>
         </div>
     );

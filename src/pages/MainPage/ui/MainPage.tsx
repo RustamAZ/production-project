@@ -13,7 +13,7 @@ const MainPage = () => {
     return (
         <Suspense fallback="">
             <div>{t('Главная страница')}</div>
-            <Input value={value} onChange={onChange} label="Введите текст" />
+            <Input value={value} onChange={onChange} label={t('Введите текст')} />
         </Suspense>
     );
 };
