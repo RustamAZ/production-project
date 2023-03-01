@@ -11,7 +11,7 @@ interface LoginModalProps {
     onClose: () => void;
 }
 
-export const LoginModal = (props: LoginModalProps) => {
+const LoginModal = (props: LoginModalProps) => {
     const { className, isOpen, onClose } = props;
     return (
         <div className={ClassNames(cls.LoginModal, {}, [className])}>
@@ -21,3 +21,5 @@ export const LoginModal = (props: LoginModalProps) => {
         </div>
     );
 };
+
+export default LoginModal;

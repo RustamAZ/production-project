@@ -1,3 +1,3 @@
-import { LoginModal } from './ui/loginModal/loginModal';
+import LoginModal from './ui/LoginModal/LoginModal';
 
 export { LoginModal };
