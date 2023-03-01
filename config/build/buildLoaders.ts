@@ -48,10 +48,15 @@ export const buildLoaders = (option: BuildOptions): RuleSetRule[] => {
 
     const cssloader = buildCssLoader(isDev);
 
+    const fontLoader = {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+    };
+
     return [
         fileloader,
         svgloader,
         babelLoader,
         typescriptLoader,
-        cssloader];
+        cssloader, fontLoader];
 };
