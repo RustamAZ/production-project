@@ -1,5 +1,5 @@
 import path from 'path';
-import { RuleSetRule } from 'webpack';
+import { DefinePlugin, RuleSetRule } from 'webpack';
 import { WebpackConfiguration } from 'webpack-dev-server';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
 import { buildSvgLoader } from '../build/loaders/buildSvgLoader';
@@ -24,5 +24,8 @@ export default ({ config }: {config: WebpackConfiguration}) => {
     });
     config.module!.rules!.push(buildSvgLoader());
     config.module!.rules!.push(buildCssLoader(true));
+    config.plugins?.push(new DefinePlugin({
+        __IS_DEV__: true,
+    }));
     return config;
 };

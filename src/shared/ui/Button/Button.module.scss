@@ -2,6 +2,11 @@
     cursor: pointer;
     color: var(--primary-color);
     padding: 6px 15px;
+
+    &[disabled] {
+        pointer-events: none;
+        opacity: 0.5;
+    }
 }
 
 .clear,
