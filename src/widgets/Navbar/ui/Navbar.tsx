@@ -41,8 +41,15 @@ export const Navbar = (props: NavbarProps) => {
 
     return (
         <div className={ClassNames(cls.Navbar, {}, [className])}>
-            <Button theme={ThemeButton.CLEAR_INVERTED} onClick={onLogin} type="button">{t('Войти')}</Button>
-            <LoginModal isOpen={isOpen} onClose={closeHandler} />
+            <Button
+                theme={ThemeButton.CLEAR_INVERTED}
+                onClick={onLogin}
+                type="button"
+            >
+                {t('Войти')}
+
+            </Button>
+            {isOpen && <LoginModal isOpen={isOpen} onClose={closeHandler} />}
         </div>
     );
 };

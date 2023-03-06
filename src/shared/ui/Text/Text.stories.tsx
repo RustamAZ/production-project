@@ -60,6 +60,7 @@ DarkOnlyText.decorators = [ThemeDecorator(Theme.DARK)];
 export const Error = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Error.args = {
+    title: 'Рустам Аббязов',
     text: 'Рустам Аббязов',
     theme: TextTheme.ERROR,
 };
