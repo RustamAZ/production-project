@@ -1,12 +1,24 @@
 {
     "Тестовый пример": "Test example",
     "Перевод": "Translate",
-    "Язык" : "Language",
+    "Главная страница": "Main page",
+    "Язык": "English",
+    "новый перевод": "новый перевод",
     "Страница не найдена": "Page not found",
-    "Произола непредвиденная ошибка": "Something went wrong.",
+    "Произошла непредвиденная ошибка": "An unexpected error has occurred",
     "Обновить страницу": "Reload page",
-    "Короткий язык": "En",
+    "throw error": "throw error",
     "Главная": "Main",
-    "О нас": "About us",
-    "Текст модального окна": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-}
+    "О сайте": "About us",
+    "Переключить": "Переключить",
+    "Короткий язык": "En",
+    "Войти": "Login",
+    "increment": "increment",
+    "decrement": "decrement",
+    "Введите логин": "Enter username",
+    "Введите пароль": "Enter password",
+    "Форма авторизации": "Auth form",
+    "Вы ввели неверный логин или пароль": "Uncorrect username or password",
+    "Выйти": "Выйти"
+  }
+  

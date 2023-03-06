@@ -22,6 +22,13 @@ Default.args = {
     children: 'Text',
 };
 
+export const Disabled = Template.bind({});
+Disabled.args = {
+    children: 'Войти',
+    theme: ThemeButton.BACKGROUND,
+    disabled: true,
+};
+
 export const Clear = Template.bind({});
 Clear.args = {
     children: 'Text',
