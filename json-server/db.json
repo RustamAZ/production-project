@@ -15,5 +15,14 @@
         "password": "123"
       }
     ],
-    "profile": { "name": "typicode" }
+    "profile": { 
+      "first": "Rustam",
+      "lastname": "Abbyazov",
+      "age": 26,
+      "currency": "RUB",
+      "coutry": "Russia",
+      "city": "Togliatty",
+      "username": "admin",
+      "avatar": "https://vk.com/abbyazov96?z=photo87959706_457245635%2Falbum87959706_0%2Frev"
+    }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ClassNames } from 'shared/lib/ClassNames/ClassNames';
 
@@ -8,7 +8,7 @@ interface NotFoundPageProps {
     className?: string;
 }
 
-const NotFoundPage = (props: NotFoundPageProps) => {
+const NotFoundPage = memo((props: NotFoundPageProps) => {
     const { className } = props;
 
     const { t } = useTranslation();
@@ -18,6 +18,6 @@ const NotFoundPage = (props: NotFoundPageProps) => {
             {t('Страница не найдена')}
         </div>
     );
-};
+});
 
 export default NotFoundPage;

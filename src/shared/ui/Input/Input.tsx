@@ -22,7 +22,7 @@ interface InputProps extends HTMLInputProps {
     onChange?: (value: string) => void;
 }
 
-export const Input :FC<InputProps> = memo((props: InputProps) => {
+export const Input:FC<InputProps> = memo((props: InputProps) => {
     const {
         className,
         theme,
