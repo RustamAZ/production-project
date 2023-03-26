@@ -8,7 +8,7 @@ interface LoaderProps {
 }
 
 export const Loader = memo((props: LoaderProps) => {
-    const { className } = props;
+    const { className = '' } = props;
 
     return (
         <div className={ClassNames(cls.ldsEllipsis, {}, [className])}>

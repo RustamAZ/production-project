@@ -9,7 +9,7 @@ interface NotFoundPageProps {
 }
 
 const NotFoundPage = memo((props: NotFoundPageProps) => {
-    const { className } = props;
+    const { className = '' } = props;
 
     const { t } = useTranslation();
 

@@ -11,7 +11,7 @@ interface LangSwitcherProps {
 
 export const LangSwitcher = memo((props: LangSwitcherProps) => {
     const {
-        className,
+        className = '',
         short,
     } = props;
     console.log('render Lang');

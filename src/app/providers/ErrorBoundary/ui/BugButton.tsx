@@ -8,7 +8,7 @@ interface BugButtonProps {
 
 // Тестовый компонент, для тестирования ошибок
 export const BugButton = (props: BugButtonProps) => {
-    const { className } = props;
+    const { className = '' } = props;
     const [error, setError] = useState(false);
 
     const onThrow = () => {

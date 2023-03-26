@@ -13,7 +13,7 @@ interface NavbarProps {
 }
 
 export const Navbar = memo((props: NavbarProps) => {
-    const { className } = props;
+    const { className = '' } = props;
     const [isOpen, setIsOpen] = useState(false);
     const [t] = useTranslation();
     const dispatch = useDispatch();

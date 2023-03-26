@@ -1,8 +1,8 @@
 import { useTheme } from 'app/providers/ThemeProvider';
 import React, {
-    Dispatch, ReactNode, SetStateAction, useEffect, useRef, useState,
+    ReactNode, useEffect, useState,
 } from 'react';
-import { ClassNames } from 'shared/lib/ClassNames/ClassNames';
+import { ClassNames, Mods } from 'shared/lib/ClassNames/ClassNames';
 import { Portal } from '../Portal/Portal';
 
 import cls from './Modal.module.scss';
@@ -17,13 +17,13 @@ interface ModalProps {
 
 export const Modal = (props: ModalProps) => {
     const {
-        className, children, isOpen, onClose, lazy,
+        className = '', children, isOpen, onClose, lazy,
     } = props;
 
     const { theme } = useTheme();
     const [isMounted, setIsMounted] = useState(false);
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [cls.opened]: isOpen,
     };
 

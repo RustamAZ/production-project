@@ -11,6 +11,7 @@
         "jsx": "react-jsx",
         // jsx - позволяет писать react кострукции 
         "allowJs": true,
+        "strict": true,
         //allowJs позволяет комппилятору обрабатывать не только ts файлы но и js
         "moduleResolution": "node",
         // moduleResolution определяет какие импорты будут node и classic. 99% используется node

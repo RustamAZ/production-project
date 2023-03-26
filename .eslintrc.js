@@ -44,10 +44,12 @@ module.exports = {
         'jsx-a11y/no-static-element-interactions': 'off',
         'no-param-reassign': 'off',
         'jsx-props-no-spreading': 'off',
+        'no-undef': 'off',
         'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid'] }],
     },
     globals: {
         __IS_DEV__: true,
+        __API__: true,
     },
     overrides: [
         {

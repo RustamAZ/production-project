@@ -1,7 +1,7 @@
 import React, {
     FC, InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
-import { ClassNames } from 'shared/lib/ClassNames/ClassNames';
+import { ClassNames, Mods } from 'shared/lib/ClassNames/ClassNames';
 import cls from './Input.module.scss';
 
 export enum ThemeInput {
@@ -24,8 +24,8 @@ interface InputProps extends HTMLInputProps {
 
 export const Input:FC<InputProps> = memo((props: InputProps) => {
     const {
-        className,
-        theme,
+        className = '',
+        theme = ThemeInput.CLEAR,
         type = 'text',
         label,
         name,
@@ -37,9 +37,9 @@ export const Input:FC<InputProps> = memo((props: InputProps) => {
 
     const [isFocused, setIsFocused] = useState(false);
     const [caretPosition, setcaretPosition] = useState(0);
-    const inputRef = useRef<HTMLInputElement>();
+    const inputRef = useRef<HTMLInputElement>(null);
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [cls[theme]]: true,
     };
 
