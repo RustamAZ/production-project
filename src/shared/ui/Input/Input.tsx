@@ -1,6 +1,8 @@
+import { getProfileReadOnly } from 'entities/Profile';
 import React, {
     FC, InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
+import { useSelector } from 'react-redux';
 import { ClassNames, Mods } from 'shared/lib/ClassNames/ClassNames';
 import cls from './Input.module.scss';
 
@@ -9,7 +11,7 @@ export enum ThemeInput {
     BORDERED = 'bordered',
 }
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
 interface InputProps extends HTMLInputProps {
     classNames?: string;
@@ -17,9 +19,10 @@ interface InputProps extends HTMLInputProps {
     label?: string;
     name?: string;
     type?: 'checkbox' | 'reset' | 'button';
-    value?: string;
+    value?: string | number;
     autofocus?: boolean;
     onChange?: (value: string) => void;
+    readOnly?: boolean
 }
 
 export const Input:FC<InputProps> = memo((props: InputProps) => {
@@ -32,15 +35,18 @@ export const Input:FC<InputProps> = memo((props: InputProps) => {
         value,
         onChange,
         autofocus,
+        readOnly,
         ...otherProps
     } = props;
 
     const [isFocused, setIsFocused] = useState(false);
     const [caretPosition, setcaretPosition] = useState(0);
     const inputRef = useRef<HTMLInputElement>(null);
+    const isCarretVisible = isFocused && !readOnly;
 
     const mods: Mods = {
         [cls[theme]]: true,
+        [cls.readonly]: readOnly,
     };
 
     const onCHangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,23 +89,32 @@ export const Input:FC<InputProps> = memo((props: InputProps) => {
                         onFocus={onFocus}
                         onBlur={onBlur}
                         onSelect={onSelect}
+                        readOnly={readOnly}
                         {...otherProps}
                     />
-                    {isFocused ? <span className={cls.caret} style={{ left: `${caretPosition * 8}px` }} /> : null}
+                    {isCarretVisible ? <span className={cls.caret} style={{ left: `${caretPosition * 8}px` }} /> : null}
                 </div>
             </div>
 
         );
     }
     return (
-        <input
-            type={type}
-            name={name}
-            id={name}
-            value={value}
-            onChange={onCHangeHandler}
-            className={ClassNames(cls.Button, mods, [className, cls[theme]])}
-            {...otherProps}
-        />
+        <div className={cls.caretWrapper}>
+            <input
+                ref={inputRef}
+                type={type}
+                name={name}
+                id={name}
+                value={value}
+                onChange={onCHangeHandler}
+                className={cls.input}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                onSelect={onSelect}
+                readOnly={readOnly}
+                {...otherProps}
+            />
+            {isCarretVisible ? <span className={cls.caret} style={{ left: `${caretPosition * 8}px` }} /> : null}
+        </div>
     );
 });
