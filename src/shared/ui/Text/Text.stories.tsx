@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { Text, TextTheme } from './Text';
+import { Text, TextSize, TextTheme } from './Text';
 
 export default {
     title: 'shared/Text',
@@ -30,6 +30,14 @@ DarkDefault.args = {
 };
 
 DarkDefault.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const SizeL = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+SizeL.args = {
+    title: 'Рустам Аббязов',
+    text: 'Рустам Аббязов',
+    size: TextSize.L,
+};
 
 export const OnlyTitle = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

@@ -5,9 +5,10 @@ import {
     AnyAction, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 
-import { CombinedState, Dispatch } from 'redux';
+import { CombinedState } from 'redux';
 import { AxiosInstance } from 'axios';
 import { NavigateOptions, To } from 'react-router-dom';
+import { articleDetailsSchema } from 'entities/Article';
 import { ProfileSchema } from '../../../../entities/Profile/model/types/profile';
 
 export interface StateSchema {
@@ -17,6 +18,7 @@ export interface StateSchema {
     // Асинхронные редюссеры
     loginForm?: LoginSchema
     profile?: ProfileSchema
+    articleDetails?: articleDetailsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

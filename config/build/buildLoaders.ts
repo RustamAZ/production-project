@@ -2,29 +2,12 @@ import { RuleSetRule } from 'webpack';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import { buildSvgLoader } from './loaders/buildSvgLoader';
 import { BuildOptions } from './types/config';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
-export const buildLoaders = (option: BuildOptions): RuleSetRule[] => {
-    const { isDev } = option;
+export const buildLoaders = (options: BuildOptions): RuleSetRule[] => {
+    const { isDev } = options;
 
-    const babelLoader = {
-        test: /\.(js|jsx|tsx)$/,
-        exclude: /node_modules/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env'],
-                plugins: [
-                    [
-                        'i18next-extract',
-                        {
-                            locales: ['ru', 'en'],
-                            keyAsDefaultValue: true,
-                        },
-                    ],
-                ],
-            },
-        },
-    };
+    const babelLoader = buildBabelLoader(options);
 
     // file - png,jpeg,jpg,gif,woff ...
     const fileloader = {
