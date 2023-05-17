@@ -10,6 +10,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading } from '../../model/selectors/articleDetails';
 import { fetchArtcileById } from '../../model/services/fetchArtcileById/fetchArtcileById';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/acticle';
@@ -71,11 +72,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         }
     }, []);
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchArtcileById(id));
-        }
-    }, [dispatch, id]);
+    useInitialEffect(() => {
+        dispatch(fetchArtcileById(id));
+    });
 
     let content;
 
@@ -123,7 +122,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     return (
         <div className={ClassNames(cls.ArticleDetails, {}, [className])}>
-            <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+            <DynamicModuleLoader reducers={reducers}>
                 {content}
             </DynamicModuleLoader>
         </div>

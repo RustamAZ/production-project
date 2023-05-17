@@ -1,6 +1,6 @@
 import { AboutPage } from 'pages/AboutPage';
-import { ArticalDetailsPage } from 'pages/ArticalDetailsPage';
-import { ArticalsPage } from 'pages/ArticalsPage';
+import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
+import { ArticlesPage } from 'pages/ArticlesPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
@@ -14,8 +14,8 @@ export enum AppRoutes {
     MAIN = 'main',
     ABOUT = 'about',
     PROFILE = 'profile',
-    ARTICALES = 'articales',
-    ARTICALES_DETAILS = 'articales_details',
+    ARTICLES = 'articles',
+    ARTICLES_DETAILS = 'articles_details',
 
     // last
     NOT_FOUND = 'not_found',
@@ -24,9 +24,9 @@ export enum AppRoutes {
 export const RoutesPath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
     [AppRoutes.ABOUT]: '/about',
-    [AppRoutes.PROFILE]: '/profile',
-    [AppRoutes.ARTICALES]: '/articales',
-    [AppRoutes.ARTICALES_DETAILS]: '/articales/', // + :id
+    [AppRoutes.PROFILE]: '/profile/', // + id
+    [AppRoutes.ARTICLES]: '/articles',
+    [AppRoutes.ARTICLES_DETAILS]: '/articles/', // + :id
 
     // последний адрес
     [AppRoutes.NOT_FOUND]: '*',
@@ -42,18 +42,18 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         element: <AboutPage />,
     },
     [AppRoutes.PROFILE]: {
-        path: RoutesPath.profile,
+        path: `${RoutesPath.profile}:id`,
         element: <ProfilePage />,
         authOnly: true,
     },
-    [AppRoutes.ARTICALES]: {
-        path: RoutesPath.articales,
-        element: <ArticalsPage />,
+    [AppRoutes.ARTICLES]: {
+        path: RoutesPath.articles,
+        element: <ArticlesPage />,
         authOnly: true,
     },
-    [AppRoutes.ARTICALES_DETAILS]: {
-        path: `${RoutesPath.articales_details}:id`,
-        element: <ArticalDetailsPage />,
+    [AppRoutes.ARTICLES_DETAILS]: {
+        path: `${RoutesPath.articles_details}:id`,
+        element: <ArticleDetailsPage />,
         authOnly: true,
     },
     [AppRoutes.NOT_FOUND]: {

@@ -12,15 +12,15 @@ export const validateProfile = (profile?: Profile) => {
     const errors: ValidateProfileError[] = [];
 
     if (!first || !lastname) {
-        errors.push(ValidateProfileError.INCORRET_USER_DATA);
+        errors.push(ValidateProfileError.INCORRECT_USER_DATA);
     }
 
     if (!age || !Number.isInteger(age)) {
-        errors.push(ValidateProfileError.INCORRET_AGE);
+        errors.push(ValidateProfileError.INCORRECT_AGE);
     }
 
     if (!country) {
-        errors.push(ValidateProfileError.INCORRET_COUNTRY);
+        errors.push(ValidateProfileError.INCORRECT_COUNTRY);
     }
 
     return errors;

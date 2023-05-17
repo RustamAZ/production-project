@@ -7,6 +7,8 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { Text } from 'shared/ui/Text/Text';
 
+import { getUserAuthData } from 'entities/User';
+import { useParams } from 'react-router-dom';
 import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderProps {
@@ -15,21 +17,18 @@ interface ProfilePageHeaderProps {
 
 export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     const { className = '' } = props;
-
     const { t } = useTranslation();
-
     const readonly = useSelector(getProfileReadOnly);
-
     const dispatch = useAppDispatch();
+    const data = useSelector(getUserAuthData);
+    const { id } = useParams<{id: string}>();
 
     const onEdit = useCallback(() => {
         dispatch(profileActions.setReadonly(false));
     }, []);
-
     const onCanselEdit = useCallback(() => {
         dispatch(profileActions.cancelEdit());
     }, []);
-
     const onSave = useCallback(() => {
         dispatch(updateProfileData());
     }, []);
@@ -37,9 +36,8 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     return (
         <div className={ClassNames(cls.ProfilePageHeader, {}, [className])}>
             <Text title={t('Профиль')} />
-
             {
-                readonly
+                data?.id !== id && (readonly
                     ? (
                         <Button
                             onClick={onEdit}
@@ -65,10 +63,8 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                             >
                                 {t('Сохранить')}
                             </Button>
-
                         </>
-
-                    )
+                    ))
             }
         </div>
     );

@@ -48,7 +48,7 @@ describe('updateProfileData.test', () => {
 
         expect(result.meta.requestStatus).toBe('rejected');
         expect(result.payload).toEqual([
-            ValidateProfileError.INCORRET_USER_DATA,
+            ValidateProfileError.INCORRECT_USER_DATA,
         ]);
     });
 

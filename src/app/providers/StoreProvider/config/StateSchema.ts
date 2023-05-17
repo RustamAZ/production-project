@@ -9,6 +9,8 @@ import { CombinedState } from 'redux';
 import { AxiosInstance } from 'axios';
 import { NavigateOptions, To } from 'react-router-dom';
 import { articleDetailsSchema } from 'entities/Article';
+import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
+import { AddCommentFormSchema } from '../../../../features/AddCommentForm/model/types/addCommentForm';
 import { ProfileSchema } from '../../../../entities/Profile/model/types/profile';
 
 export interface StateSchema {
@@ -19,6 +21,8 @@ export interface StateSchema {
     loginForm?: LoginSchema
     profile?: ProfileSchema
     articleDetails?: articleDetailsSchema
+    ArticleDetailsComments?: ArticleDetailsCommentsSchema
+    AddCommentForm?: AddCommentFormSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
@@ -31,7 +35,7 @@ export interface ReducerManager {
 }
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
-    reducerManager: ReducerManager
+    reducerManager: ReducerManager;
 }
 
 export interface ThunkExtraArg {

@@ -19,6 +19,8 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 interface ProfilePageProps {
@@ -39,20 +41,22 @@ const ProfilePage = memo((props: ProfilePageProps) => {
     const readonly = useSelector(getProfileReadOnly);
     const validateErrors = useSelector(getProfileValidateError);
     const numberRegex = /^\d+$/;
+    const { id } = useParams<{id: string}>();
 
     const validatetErrorTranslates = {
         [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка'),
-        [ValidateProfileError.INCORRET_COUNTRY]: t('Некоректный регион'),
-        [ValidateProfileError.INCORRET_USER_DATA]: t('Имя и фамилия обязательны'),
-        [ValidateProfileError.INCORRET_AGE]: t('Некорректный возраст'),
+        [ValidateProfileError.INCORRECT_COUNTRY]: t('Некоректный регион'),
+        [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательны'),
+        [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
         [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
     };
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+    useInitialEffect(() => {
+        console.log(id);
+        if (id) {
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
 
     const OnChangeFirstname = useCallback((value: string) => {
         dispatch(profileActions.updateProfile({
@@ -98,8 +102,16 @@ const ProfilePage = memo((props: ProfilePageProps) => {
         dispatch(profileActions.updateProfile({ country: value }));
     }, [dispatch]);
 
+    if (!id) {
+        return (
+            <div>
+                {t('Профиль не найден')}
+            </div>
+        );
+    }
+
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+        <DynamicModuleLoader reducers={reducers}>
             <div className={ClassNames('', {}, [className])}>
                 <ProfilePageHeader />
                 {

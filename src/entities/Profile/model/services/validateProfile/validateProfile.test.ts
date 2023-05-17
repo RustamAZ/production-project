@@ -25,7 +25,7 @@ describe('validateProfile.test', () => {
         const result = validateProfile({ ...data, first: '', lastname: '' });
 
         expect(result).toEqual([
-            ValidateProfileError.INCORRET_USER_DATA,
+            ValidateProfileError.INCORRECT_USER_DATA,
         ]);
     });
 
@@ -33,7 +33,7 @@ describe('validateProfile.test', () => {
         const result = validateProfile({ ...data, age: undefined });
 
         expect(result).toEqual([
-            ValidateProfileError.INCORRET_AGE,
+            ValidateProfileError.INCORRECT_AGE,
         ]);
     });
 
@@ -41,7 +41,7 @@ describe('validateProfile.test', () => {
         const result = validateProfile({ ...data, country: undefined });
 
         expect(result).toEqual([
-            ValidateProfileError.INCORRET_COUNTRY,
+            ValidateProfileError.INCORRECT_COUNTRY,
         ]);
     });
 
@@ -49,9 +49,9 @@ describe('validateProfile.test', () => {
         const result = validateProfile({ });
 
         expect(result).toEqual([
-            ValidateProfileError.INCORRET_USER_DATA,
-            ValidateProfileError.INCORRET_AGE,
-            ValidateProfileError.INCORRET_COUNTRY,
+            ValidateProfileError.INCORRECT_USER_DATA,
+            ValidateProfileError.INCORRECT_AGE,
+            ValidateProfileError.INCORRECT_COUNTRY,
         ]);
     });
 });
